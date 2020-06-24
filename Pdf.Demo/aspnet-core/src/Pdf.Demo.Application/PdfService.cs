@@ -4,17 +4,17 @@ using Volo.Abp.DependencyInjection;
 
 namespace Pdf.Demo
 {
-    public class PDFService : IPDFService , ITransientDependency
+    public class PdfService : IPdfService, ITransientDependency
     {
         private readonly IConverter _converter;
 
-        public PDFService(IConverter converter)
+        public PdfService(IConverter converter)
         {
             _converter = converter;
         }
 
 
-        public byte[] CreatePDF(string htmlContent)
+        public byte[] CreatePdf(string htmlContent)
         {
             var globalSettings = new GlobalSettings
             {
@@ -34,20 +34,18 @@ namespace Pdf.Demo
             {
                 PagesCount = true,
                 HtmlContent = htmlContent,
-                WebSettings = { DefaultEncoding = "utf-8" },
+                WebSettings = {DefaultEncoding = "utf-8"},
             };
 
             var pdf = new HtmlToPdfDocument()
             {
                 GlobalSettings = globalSettings,
-                Objects = { objectSettings }
+                Objects = {objectSettings}
             };
 
             var file = _converter.Convert(pdf);
 
             return file;
-
         }
     }
-
 }

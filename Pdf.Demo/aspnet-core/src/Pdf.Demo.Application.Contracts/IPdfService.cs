@@ -1,7 +1,7 @@
 ﻿namespace Pdf.Demo
 {
-    public interface IPDFService
+    public interface IPdfService
     {
-        byte[] CreatePDF(string htmlContent);
+        byte[] CreatePdf(string htmlContent);
     }
 }
