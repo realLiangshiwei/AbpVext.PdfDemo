@@ -3,6 +3,7 @@ using Volo.Abp;
 
 namespace Pdf.Demo.Controllers
 {
+    [RemoteService()]
     public class TestController : DemoController
     {
         private readonly IPDFService _pdfService;
@@ -13,6 +14,7 @@ namespace Pdf.Demo.Controllers
         }
 
         // GET
+        [HttpGet]
         public IActionResult Index()
         {
             var content = "<html><body>hello world</body></html>";
